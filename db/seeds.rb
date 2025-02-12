@@ -31,4 +31,5 @@ more_movies = [
 more_movies.each do |movie|
     unless Movie.exists?(title: movie[:title])  #prevent duplicates
         Movie.create!(movie)
+    end
 end

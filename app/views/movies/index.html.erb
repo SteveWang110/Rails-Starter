@@ -4,13 +4,27 @@
 
 <h1>Movies</h1>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New movie", new_movie_path %>
+
+<table>
+  <thead>
+    <th><%= link_to "Sort by Title", movies_path(sort: "title", direction: toggle("title")) %></th>
+    <th><%= link_to "Sort by Rating", movies_path(sort: "rating", direction: toggle("rating")) %></th>
+    <th><%= link_to "Sort by Release Date", movies_path(sort: "release_date", direction: toggle("release_date")) %></th>
+  </thead>
+
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
+<%= link_to "Add New Movie", new_movie_path(sort: params[:sort],  direction: params[:direction]), class: "button" %>
