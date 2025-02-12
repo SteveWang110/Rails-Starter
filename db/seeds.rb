@@ -20,8 +20,15 @@ more_movies = [
     :release_date => '19-Feb-2021'},
   {:title => 'CODA', :rating => 'PG-13',
     :release_date => '13-Aug-2021'}
+  {:title => 'The Dark Knight', :rating => 'PG-13',
+    :release_date => '18-Jul-2008'}  
+  {:title => 'Forrest Gump', :rating => 'PG-13',
+    :release_date => '6-Jul-1994'}
+  {:title => 'Interstellar', :rating => 'PG-13',
+    :release_date => '7-Nov-2021'}  
 ]
 
 more_movies.each do |movie|
-  Movie.create!(movie)
+    unless Movie.exists?(title: movie[:title])  #prevent duplicates
+        Movie.create!(movie)
 end
