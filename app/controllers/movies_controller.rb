@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
-  before_action :set_sort_session, only: [:index]
+  before_action :set_sort_session, only: [ :index ]
 
   helper_method :toggle # Make this helper available in views
   helper_method :highlight_column
@@ -25,18 +25,17 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
 
   def set_sort_session
-    @sort_column = params[:sort] || session[:sort_column] || 'title'    # remember session
-    @sort_direction = params[:direction] || session[:sort_direction] || 'asc'
-    session[:sort_column] = @sort_column  #update current sort information to session
+    @sort_column = params[:sort] || session[:sort_column] || "title"    # remember session
+    @sort_direction = params[:direction] || session[:sort_direction] || "asc"
+    session[:sort_column] = @sort_column  # update current sort information to session
     session[:sort_direction] = @sort_direction
   end
 
   def index
-    @movies = Movie.order("#{@sort_column} #{@sort_direction}") #sort 
+    @movies = Movie.order("#{@sort_column} #{@sort_direction}") # sort
   end
 
   def toggle(column)
-    
     if column == @sort_column && @sort_direction == "asc"
       "desc"
 
