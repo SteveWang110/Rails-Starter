@@ -3,6 +3,24 @@ class MoviesController < ApplicationController
   before_action :set_sort_session, only: [:index]
 
   helper_method :toggle # Make this helper available in views
+  helper_method :highlight_column
+  helper_method :sort_indicator
+
+  def highlight_column(column)
+    if @sort_column == column
+      @sort_direction == "asc" ? "hasc" : "hdesc"
+    else
+      ""
+    end
+  end
+
+  def sort_indicator(column)
+    if @sort_column == column
+      @sort_direction == "asc" ? "▲" : "▼"
+    else
+      ""
+    end
+  end
 
   # GET /movies or /movies.json
 

@@ -8,3 +8,29 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+
+  .highlight {
+    background-color: #c6c4c4; 
+  }
+
+  .hasc {
+    background-color: #82ea9a; 
+  }
+  
+  .hdesc {
+    background-color: #ef929a; 
+  }
+
+  h1 {
+    font-size: 50px;
+    text-decoration: underline;
+  }
+
+  body {
+    background-color: #b8d4ee;
+  }
+
+  input[type = "submit"]{
+    background-color: rgb(77, 200, 137);
+  }
